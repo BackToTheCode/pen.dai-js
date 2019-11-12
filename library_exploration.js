@@ -61,11 +61,16 @@ async function getUnits() {
     console.log(usd.toString());
 }
 
+async function getProxy() {
+  return maker.service('proxy').currentProxy();
+}
+
 async function main() {
   await setupMaker();
   await getCurrentCdp();
   await getPrices();
   await getUnits();
+  console.log('current proxy:', await getProxy())
 }
 
 main();
