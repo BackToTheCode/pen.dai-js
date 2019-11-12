@@ -65,12 +65,19 @@ async function getProxy() {
   return maker.service('proxy').currentProxy();
 }
 
+async function getWeb3() {
+  web3 = await maker.service('web3')._web3;
+  return web3;
+}
+
 async function main() {
   await setupMaker();
   await getCurrentCdp();
   await getPrices();
   await getUnits();
-  console.log('current proxy:', await getProxy())
+  const web3 = await getWeb3();
+  console.log('web3: ', web3);
+  console.log('current proxy:', await getProxy());  
 }
 
 main();
